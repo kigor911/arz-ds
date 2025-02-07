@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="l_menu">
+        <img src="source/icon/nightcore.png" alt="" class="lmenu_img">
+        <div class="lmenu_nav">
+            <div class="line_div">
+                <div class="line"></div>
+                <p class="lmanu_title">
+                    Navigation
+                </p>
+                <div class="line"></div>
+            </div>
+
+            <button href="" class="lmenu_nav_link" onclick="showSection('moderatorPanel')">
+                Панель модератора
+            </button>
+            <button href="" class="lmenu_nav_link" onclick="showSection('profile')">
+                Личный профиль
+            </button>
+            <button href="" class="lmenu_nav_link" onclick="showSection('stats')">
+                Статистика модерации
+            </button>
+            <button href="" class="lmenu_nav_link" onclick="showSection('magazin')">
+                Магазин
+            </button>
+            <button href="" class="lmenu_nav_link" onclick="showSection('setting')">
+                Настройки
+            </button>
+            <button href="" class="lmenu_nav_link" onclick="showSection('faq')">
+                FAQ
+            </button>
+        </div>
+        <div class="lmenu_nav">
+            <div class="line_div">
+                <div class="line"></div>
+                <p class="lmanu_title">
+                    Lorem
+                </p>
+                <div class="line"></div>
+            </div>
+
+            <a href="" class="lmenu_nav_link">
+                For developer
+            </a>
+            <a href="" class="lmenu_nav_link">
+                Lorem, ipsum.
+            </a>
+            <a href="" class="lmenu_nav_link">
+                Lorem, ipsum.
+            </a>
+            <a href="" class="lmenu_nav_link">
+                Lorem, ipsum.
+            </a>
+            <a href="" class="lmenu_nav_link">
+                Lorem, ipsum.
+            </a>
+        </div>
+    </div>
+    <div class="main_block">
+        <div class="header">
+            <div class="header_text">hello, <span id="moderatorName">DarkSoul</span></div>
+            <div class="header_user">
+                <div class="header_info">
+                    <p id="moderatorName" class="info_name">
+                        DarkSoul
+                    </p>
+                    <p class="info_status">
+                        developer
+                    </p>
+                </div>
+
+                <div class="header_logo">
+                    <img src="source/icon/icon_user.jpg" alt="" class="logo_user">
+                </div>
+
+
+            </div>
+        </div>
+        <div class="intro">
+
+            <div id="moderatorPanel" class="container active">
+                <div class="intro_table">
+
+                    <h1 class="intro_title">Панель модератора</h1>
+                    <div>
+                        <input class="inp_text" type="text" id="nicknameFilter" placeholder="Фильтр по никнейму">
+                        <input class="Inp_data" type="date" id="dateFilter">
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Модератор</th>
+                                <th>Дата</th>
+                                <th>Предупреждения</th>
+                                <th>Дни на уровне</th>
+                                <th>Всего наказаний</th>
+                            </tr>
+                        </thead>
+                        <tbody id="penaltyTable">
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div id="loader" class="loader"></div>
+
+            <div id="profile" class="container">
+                <h1 class="profile-title">Личный профиль модератора</h1>
+                <div class="profile-container profile-info">
+                    <div class="user_logo">
+                        <img src="source/icon/icon_user.jpg" id="moderatorAvatar" alt="" class="user_icon">
+                    </div>
+                    <div class="profile_info_d">
+                        <h2 class="profile-heading">Информация о модераторе</h2>
+                        <p><span class="profile-label">Никнейм:</span> <span id="moderatorName">DarkSoul</span></p>
+                        <p><span class="profile-label">Дата постановления:</span> <span
+                                id="moderatorDate">2024-02-01</span>
+                        </p>
+                        <p><span class="profile-label">Текущий уровень:</span> <span id="moderatorLevel">5</span></p>
+                    </div>
+
+                </div>
+
+                <div class="profile-container profile-edit">
+                    <h2 class="profile-heading">Редактирование профиля</h2>
+                    <label for="avatarUpload" class="profile-label">Сменить аватар:</label>
+                    <br>
+                    <input type="file" id="avatarUpload" class="profile-input" accept="image/*"
+                        onchange="updateAvatar()">
+                    <br>
+                    <button onclick="updatePassword()" class="profile-button">Обновить пароль</button>
+                    <br>
+                    <button onclick="logout()" class="profile-button" style="background-color: red;">Выйти из
+                        аккаунта</button>
+                </div>
+
+            </div>
+            <div class="container" id="magazin">
+                <h1 class="shop-title">Магазин модераторов</h1>
+                <p class="balance-container">Ваш баланс: <span id="balance">100</span> монет</p>
+                <div class="shop-container">
+                    <div class="item" data-price="30">
+                        <h3 class="item-title"> <span style="color: #ffcd00;">
+                                VIP-доступ
+                            </span></h3>
+                        <p class="item-description">Дает доступ к эксклюзивным возможностям.</p>
+                        <button class="btn-6" onclick="buyItem(this)"><span>30 монет</span></button>
+
+                    </div>
+
+
+                    <div class="item" data-price="10">
+                        <h3 class="item-title"> <span style="color: #fff;">
+                                Продление роли
+                            </span></h3>
+                        <p class="item-description">Продливает персональные роли на 10 дней</p>
+                        <button class="btn-6" onclick="buyItem(this)"><span>10 монет</span></button>
+
+                    </div>
+
+
+                    <div class="item" data-price="30">
+                        <h3 class="item-title"> <span style="color: #ff5151;">Анти Предупреждения</span></h3>
+                        <p class="item-description">Снимает предупреждение с профиля</p>
+
+                        <button class="btn-6" onclick="buyItem(this)"><span>30 монет</span></button>
+
+                    </div>
+
+
+                    <div class="item" data-price="30">
+                        <h3 class="item-title "><span class="gradient-text">
+                                Персональная роль
+                            </span></h3>
+                        <p class="item-description">Добавляет к вашему профилю персональную роль</p>
+                        <button class="btn-6" onclick="buyItem(this)"><span>30 монет</span></button>
+
+                    </div>
+
+
+                    <div class="notification" id="notification"></div>
+                </div>
+
+            </div>
+            <div class="container" id="stats">
+                <h1 class="stats_title">Статистика модерации</h1>
+
+
+                <div class="table-container">
+                    <table class="moderation-table" id="moderationTable">
+                        <thead>
+                            <tr>
+                                <th>Kick</th>
+                                <th>Mute</th>
+                                <th>Ban</th>
+                                <th>Предупреждения</th>
+                                <th>Одобрено ролей</th>
+                                <th>Снято ролей</th>
+                                <th class="sort-asc" onclick="sortTable(6)">Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td>5</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>1</td>
+                                <td>2024-02-01</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>2024-02-02</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>2024-02-03</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>2024-02-04</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>2024-02-05</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>1</td>
+                                <td>2024-02-01</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>2024-02-02</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>2024-02-03</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>2024-02-04</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>2024-02-05</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>1</td>
+                                <td>2024-02-01</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>2024-02-02</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>2024-02-03</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>2024-02-04</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>2024-02-05</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h1 class="action_title">Последние действия модератора</h1>
+                <div class="actions-container">
+                    <table class="actions-table">
+                        <thead class="actions-header">
+                            <tr>
+                                <th class="actions-header-item">Действие</th>
+                                <th class="actions-header-item">Ник игрока</th>
+                                <th class="actions-header-item">Причина</th>
+                                <th class="actions-header-item">Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Ban</td>
+                                <td class="actions-cell">Игрок1</td>
+                                <td class="actions-cell">Оскорбление</td>
+                                <td class="actions-cell">02.02.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Выдал роль</td>
+                                <td class="actions-cell">Игрок2</td>
+                                <td class="actions-cell">SFPD</td>
+                                <td class="actions-cell">02.02.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Mute</td>
+                                <td class="actions-cell">Игрок3</td>
+                                <td class="actions-cell">Спам</td>
+                                <td class="actions-cell">01.02.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Kick</td>
+                                <td class="actions-cell">Игрок4</td>
+                                <td class="actions-cell">Нарушение правил</td>
+                                <td class="actions-cell">01.02.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Mute</td>
+                                <td class="actions-cell">Игрок3</td>
+                                <td class="actions-cell">Спам</td>
+                                <td class="actions-cell">01.02.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Kick</td>
+                                <td class="actions-cell">Игрок4</td>
+                                <td class="actions-cell">Нарушение правил</td>
+                                <td class="actions-cell">01.02.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Kick</td>
+                                <td class="actions-cell">Игрок4</td>
+                                <td class="actions-cell">Нарушение правил</td>
+                                <td class="actions-cell">01.02.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Mute</td>
+                                <td class="actions-cell">Игрок3</td>
+                                <td class="actions-cell">Спам</td>
+                                <td class="actions-cell">29.01.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Kick</td>
+                                <td class="actions-cell">Игрок4</td>
+                                <td class="actions-cell">Нарушение правил</td>
+                                <td class="actions-cell">29.01.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Mute</td>
+                                <td class="actions-cell">Игрок3</td>
+                                <td class="actions-cell">Спам</td>
+                                <td class="actions-cell">29.01.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Kick</td>
+                                <td class="actions-cell">Игрок4</td>
+                                <td class="actions-cell">Нарушение правил</td>
+                                <td class="actions-cell">29.01.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Mute</td>
+                                <td class="actions-cell">Игрок3</td>
+                                <td class="actions-cell">Спам</td>
+                                <td class="actions-cell">29.01.2025</td>
+                            </tr>
+                            <tr class="actions-row">
+                                <td class="actions-cell">Kick</td>
+                                <td class="actions-cell">Игрок4</td>
+                                <td class="actions-cell">Нарушение правил</td>
+                                <td class="actions-cell">29.01.2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <script src="script/modarator-stats.js"></script>
+        <script src="script/script-tb.js"></script>
+        <script src="script/nav.js"></script>
+        <script src="script/profile.js"></script>
+        <script src="script/valid.js"></script>
+</body>
+
+</html>
