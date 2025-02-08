@@ -14,9 +14,9 @@
 
 <body>
 
-    <div class="l_menu">
+    <aside class="l_menu">
         <img src="source/icon/nightcore.png" alt="" class="lmenu_img">
-        <div class="lmenu_nav">
+        <nav class="lmenu_nav">
             <div class="line_div">
                 <div class="line"></div>
                 <p class="lmanu_title">
@@ -24,7 +24,6 @@
                 </p>
                 <div class="line"></div>
             </div>
-
             <button href="" class="lmenu_nav_link" onclick="showSection('moderatorPanel')">
                 Панель модератора
             </button>
@@ -43,7 +42,7 @@
             <button href="" class="lmenu_nav_link" onclick="showSection('faq')">
                 FAQ
             </button>
-        </div>
+        </nav>
         <div class="lmenu_nav">
             <div class="line_div">
                 <div class="line"></div>
@@ -69,7 +68,7 @@
                 Lorem, ipsum.
             </a>
         </div>
-    </div>
+    </aside>
     <div class="main_block">
         <div class="header">
             <div class="header_text">hello, <span id="moderatorName">DarkSoul</span></div>
@@ -98,21 +97,21 @@
                     <h1 class="intro_title">Панель модератора</h1>
                     <div>
                         <input class="inp_text" type="text" id="nicknameFilter" placeholder="Фильтр по никнейму">
-                        <input class="Inp_data" type="date" id="dateFilter">
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Модератор</th>
-                                <th>Дата</th>
-                                <th>Предупреждения</th>
-                                <th>Дни на уровне</th>
-                                <th>Всего наказаний</th>
-                            </tr>
-                        </thead>
-                        <tbody id="penaltyTable">
-                        </tbody>
-                    </table>
+                    <article id="container__card">
+                        <div class="moderator__card">
+                            <div class="userImg">
+                                <img src="./source/img/boy.jpg" alt="">
+                            </div>
+                            <div class="mainInfromationUser">
+                                <h3>role</h1>
+                                <h1 id="nicknameFilter">Sam_Darkov</h1>
+                                <div class="user__online">
+                                    <h4>online</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
 
                 </div>
             </div>

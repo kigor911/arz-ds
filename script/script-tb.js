@@ -1,51 +1,65 @@
 
-const penalties = [{
-        moderator: "DarkSoul",
-        date: "2024-02-01",
-        warnings: 2,
-        daysOnLevel: 5,
-        totalPenalties: 4
+const penalties = [
+    {
+        nickName: "AntiLfs",
+        status: 'St. Moderator',
+        online: 'online',
+        imgProfile: '',
     },
     {
-        moderator: "VampireQueen",
-        date: "2024-01-30",
-        warnings: 1,
-        daysOnLevel: 3,
-        totalPenalties: 2
+        nickName: "DarkSoul",
+        status: 'St. Moderator',
+        online: 'offline',
+        imgProfile: '',
     },
     {
-        moderator: "GothicKnight",
-        date: "2024-01-28",
-        warnings: 3,
-        daysOnLevel: 7,
-        totalPenalties: 6
+        nickName: "VampireQueen",
+        status: 'St. Moderator',
+        online: 'offline',
+        imgProfile: '',
+    },
+    {
+        nickName: "GothicKnight",
+        status: 'St. Moderator',
+        online: 'offline',
+        imgProfile: '',
+    },
+    {
+        nickName: "Nikita_Mentally",
+        status: 'moderator',
+        online: 'online',
+        imgProfile: '',
     },
 ];
 
 function renderTable() {
     const nicknameFilter = document.getElementById("nicknameFilter").value.toLowerCase();
-    const dateFilter = document.getElementById("dateFilter").value;
-    const tableBody = document.getElementById("penaltyTable");
-    tableBody.innerHTML = "";
+    const cardBody = document.getElementById("container__card");
+    cardBody.innerHTML = "";
 
     const filteredPenalties = penalties.filter(penalty =>
-        penalty.moderator.toLowerCase().includes(nicknameFilter) &&
-        (dateFilter === "" || penalty.date === dateFilter)
+        penalty.nickName.toLowerCase().includes(nicknameFilter)
     );
 
     filteredPenalties.forEach(penalty => {
-        const row = `<tr>
-<td>${penalty.moderator}</td>
-<td>${penalty.date}</td>
-<td>${penalty.warnings}</td>
-<td>${penalty.daysOnLevel}</td>
-<td>${penalty.totalPenalties}</td>
-</tr>`;
-        tableBody.innerHTML += row;
+        const row = `
+            <div class="moderator__card">
+            <div class="userImg">
+                <img src="./source/img/boy.jpg" alt="">
+            </div>
+            <div class="mainInfromationUser">
+                <h3>${penalty.status}</h1>
+                <h1 id="nicknameFilter">${penalty.nickName}</h1>
+                <div class="user__statusOnline ${penalty.online == 'online' ? 'user__online' : 'user__offline'}">
+                    <h4>${penalty.online}</h1>
+                </div>
+            </div>
+            </div>
+        `; // когда из бека будут данные приходить измените src
+        cardBody.innerHTML += row;
     });
 }
 
 document.getElementById("nicknameFilter").addEventListener("input", renderTable);
-document.getElementById("dateFilter").addEventListener("change", renderTable);
 
 renderTable();
