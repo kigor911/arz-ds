@@ -649,7 +649,7 @@ input {
 
 /* moderator-panel */
 
-.moderators-panel {
+#moderators-panel {
     max-width: 800px;
     margin: 0 auto;
     background: #292929;
