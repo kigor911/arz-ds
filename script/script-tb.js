@@ -45,6 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
             moderatorsList.appendChild(row);
         });
     }
+    // Фильтр по никнейму
+filterInput.addEventListener("input", function () {
+    const searchText = filterInput.value.toLowerCase();
+    const filteredModerators = moderators.filter(mod => 
+        mod.nickname.toLowerCase().includes(searchText)
+    );
+    renderTable(filteredModerators); // Обновляем таблицу
+});
+
 
     // Функция открытия модального окна
     function openModal(mod) {
@@ -83,3 +92,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderTable(moderators);
 });
+
