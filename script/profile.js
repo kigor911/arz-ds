@@ -6,7 +6,7 @@ function updatePassword() {
         alert("Пароль должен содержать минимум 6 символов.");
         return;
     }
-    alert("Пароль успешно обновлен!");
+    alert("Пароль успешно обновлен!!!");
 }
 
 function updateAvatar() {

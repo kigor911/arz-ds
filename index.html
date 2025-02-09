@@ -95,23 +95,41 @@
                 <div class="intro_table">
 
                     <h1 class="intro_title">Панель модератора</h1>
-                    <div>
-                        <input class="inp_text" type="text" id="nicknameFilter" placeholder="Фильтр по никнейму">
+                    <div class="moderators-panel">
+                        <nav class="moderators-panel__nav">
+                            <input type="text" class="moderators-panel__filter" placeholder="Фильтр по никнейму / ID Discord">
+                        </nav>
+                        <table class="moderators-panel__table">
+                            <thead>
+                                <tr>
+                                    <th>Никнейм</th>
+                                    <th>Уровень</th>
+                                    <th>Предупреждения</th>
+                                    <th>Баллы</th>
+                                    <th>Дата постановления</th>
+                                    <th>Форум</th>
+                                </tr>
+                            </thead>
+                            <tbody id="moderators-list">
+                                <tr>
+                                    <td>DarkKnight</td>
+                                    <td>3</td>
+                                    <td>1</td>
+                                    <td>150</td>
+                                    <td>2024-01-15</td>
+                                    <td><a href="#">Ссылка</a></td>
+                                </tr>
+                                <tr>
+                                    <td>ShadowFox</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td>200</td>
+                                    <td>2024-02-01</td>
+                                    <td><a href="#">Ссылка</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <article id="container__card">
-                        <div class="moderator__card">
-                            <div class="userImg">
-                                <img src="./source/img/boy.jpg" alt="">
-                            </div>
-                            <div class="mainInfromationUser">
-                                <h3>role</h1>
-                                <h1 id="nicknameFilter">Sam_Darkov</h1>
-                                <div class="user__online">
-                                    <h4>online</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
 
                 </div>
             </div>

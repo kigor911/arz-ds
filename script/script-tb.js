@@ -1,65 +1,45 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("moderator-modal");
+    const modalContent = document.getElementById("moderator-info");
+    const closeModal = document.querySelector(".moderators-modal__close");
+    const tableRows = document.querySelectorAll("#moderators-list tr");
+    const filterInput = document.querySelector(".moderators-panel__filter");
 
-const penalties = [
-    {
-        nickName: "AntiLfs",
-        status: 'St. Moderator',
-        online: 'online',
-        imgProfile: '',
-    },
-    {
-        nickName: "DarkSoul",
-        status: 'St. Moderator',
-        online: 'offline',
-        imgProfile: '',
-    },
-    {
-        nickName: "VampireQueen",
-        status: 'St. Moderator',
-        online: 'offline',
-        imgProfile: '',
-    },
-    {
-        nickName: "GothicKnight",
-        status: 'St. Moderator',
-        online: 'offline',
-        imgProfile: '',
-    },
-    {
-        nickName: "Nikita_Mentally",
-        status: 'moderator',
-        online: 'online',
-        imgProfile: '',
-    },
-];
-
-function renderTable() {
-    const nicknameFilter = document.getElementById("nicknameFilter").value.toLowerCase();
-    const cardBody = document.getElementById("container__card");
-    cardBody.innerHTML = "";
-
-    const filteredPenalties = penalties.filter(penalty =>
-        penalty.nickName.toLowerCase().includes(nicknameFilter)
-    );
-
-    filteredPenalties.forEach(penalty => {
-        const row = `
-            <div class="moderator__card">
-            <div class="userImg">
-                <img src="./source/img/boy.jpg" alt="">
-            </div>
-            <div class="mainInfromationUser">
-                <h3>${penalty.status}</h1>
-                <h1 id="nicknameFilter">${penalty.nickName}</h1>
-                <div class="user__statusOnline ${penalty.online == 'online' ? 'user__online' : 'user__offline'}">
-                    <h4>${penalty.online}</h1>
-                </div>
-            </div>
-            </div>
-        `; // когда из бека будут данные приходить измените src
-        cardBody.innerHTML += row;
+    tableRows.forEach(row => {
+        row.addEventListener("click", function () {
+            const cells = row.children;
+            modalContent.innerHTML = `
+                <p><strong>Никнейм:</strong> ${cells[0].innerText}</p>
+                <p><strong>Уровень:</strong> ${cells[1].innerText}</p>
+                <p><strong>Предупреждения:</strong> ${cells[2].innerText}</p>
+                <p><strong>Баллы:</strong> ${cells[3].innerText}</p>
+                <p><strong>Дата постановления:</strong> ${cells[4].innerText}</p>
+                <p><strong>Форум:</strong> ${cells[5].innerHTML}</p>
+            `;
+            modal.style.display = "flex";
+        });
     });
-}
 
-document.getElementById("nicknameFilter").addEventListener("input", renderTable);
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
 
-renderTable();
+    window.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    filterInput.addEventListener("input", function () {
+        const filter = filterInput.value.toLowerCase();
+        tableRows.forEach(row => {
+            const nickname = row.children[0].innerText.toLowerCase();
+            const discordId = row.children[4].innerText.toLowerCase();
+            if (nickname.includes(filter) || discordId.includes(filter)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+});
