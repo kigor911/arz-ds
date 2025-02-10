@@ -2,7 +2,7 @@
     const canvas = document.getElementById('circle--particle');
     const widthCanvas = window.innerWidth;
     canvas.width = window.innerWidth;
-    canvas.height = 1000;
+    canvas.height = document.getElementById('circle--particle').clientHeight;
     const ctx = canvas.getContext('2d');
     const pi = Math.PI;
     const particles = [];
@@ -16,17 +16,17 @@
             this.x = Math.random() * (widthCanvas - 50 + 1) + 50;
             this.y = Math.random() * (1000 - 50 + 1) + 50;
             this.radius = Math.random() * (50 - 10 + 1) + 20;
-            this.speed = Math.random() * (1 - 0.5) + 0.5;
+            this.speed = Math.random() * (0.5 - 0.1) + 0.1;
             this.direction = Math.random() < 0.5 ? -1 : 1;
         }
 
         draw() {
             ctx.beginPath();
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.651)';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.251)';
             ctx.arc(this.x, this.y, this.radius, 0, pi * 2);
             ctx.fill();
         }
-
+        
         update() {
             this.x += this.direction * this.speed;
             this.y -= 1;
